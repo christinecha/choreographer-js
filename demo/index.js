@@ -1,4 +1,4 @@
-// import Choreographer from '../src'
+const Choreographer = require('../dist')
 
 const vh = window.innerHeight
 const dh = document.body.clientHeight
