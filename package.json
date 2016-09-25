@@ -1,6 +1,6 @@
 {
   "name": "choreographer-js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A simple library to take care of complicated animations.",
   "main": "dist/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "scroll"
   ],
   "author": "Christine Cha <hello@christinecha.com> (https://github.com/christinecha)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/christinecha/choreographer-js/issues"
   },
