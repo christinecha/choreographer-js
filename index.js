@@ -81,11 +81,8 @@ let choreographer = new Choreographer({
   }
 })
 
-// choreographer.on()
-
 const animate = () => {
   const scrollPosition = ($wrapper.getBoundingClientRect().top - $wrapper.offsetTop) * -1
-  console.log(scrollPosition)
   choreographer.runAnimationsAt(scrollPosition)
 }
 
