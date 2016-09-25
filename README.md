@@ -94,7 +94,7 @@ More detailed documentation below.
 construction:  
 `new Choreographer(` [`choreographerConfig`](#choreographerconfig) `)`
 
-methods:
+public methods:
 - [`this.updateAnimations`](#update-animations)
 - [`this.runAnimationsAt`](#run-animations-at)
 
@@ -108,7 +108,7 @@ example structure:
 ```
 {
   customFunctions: {
-    [function name]: [animationFunction]
+    [animation type]: [animationFunction]
   },
   animations: [ animationConfig, animationConfig, ... ]
 }
@@ -128,7 +128,6 @@ related references: [`animationFunction`](#animationfunction), [`animationConfig
 `[Function]` | Run the animations at a given location marker.
 
 ---
----
 
 ### `Animation`
 
@@ -136,10 +135,6 @@ related references: [`animationFunction`](#animationfunction), [`animationConfig
 
 construction:  
 `new Animation(` [`animationConfig`](#animationconfig) `)`
-
-methods:
-- [`this.updateAnimations`](#update-animations)
-- [`this.runAnimationsAt`](#run-animations-at)
 
 ---
 
@@ -149,55 +144,93 @@ methods:
 
 example structure:
 ```
-{ range: [0, 100],  selector: '.box', type: 'scale', fn: [animationFunction], style: 'width', from: 0, to: 100, unit: '%' }
+{
+  range: [0, 100],
+  selector: '.box',
+  type: 'scale',
+  fn: [animationFunction],
+  style: 'width',
+  from: 0,
+  to: 100,
+  unit: '%'
+}
 ```
 
-`range` | `[Array of Number]` or `[Array of Array of Number]`  
+**`range`** | `[Array of Number]` or `[Array of Array of Number]`  
 Either a one- or two-dimensional array of ranges, i.e. [0,5] or [[0,3], [4,5]]  
 *NOTE: Bugs will occur if you overlap animation ranges that affect the same style properties!*
 
-`type` | `[String]`  
+**`type`** | `[String]`  
 The name of the animation function
 
-`fn` | `[animationFunction]`
-The animation function
+**`fn`** | `[animationFunction]`
+see `animationFunction`](#animationfunction)
 
-`selector` | `[String]`  
+**`selector`** | `[String]`  
 A valid DOM Element selector string, ex. '.classname' or '#box .thing[data-attr=true]'
 
-`selectors` | `[Array]`
+**`selectors`** | `[Array]`
 An array of selector strings (as described above).
 
 *NOTE: Only one of the below (selector or selectors) is necessary. If they both exist, 'selectors' will be used.*
 
-`style` | `[String]`
+**`style`** | `[String]`
 A valid CSS style property.
 *NOTE: If you are using 'transform', follow it with a colon and the property name, ex. 'transform:scaleX'*
 
-{Number} from     | The minimum value to set to the style property. Useful when progressively calculating a value.
-{Number} to       | The value to set to the style property. (Or the max, when progressively calculating a value.)
-NOTE: If you are ONLY using the 'to' value, like with a 'change' animation, this could also be {String} to.
+**`from`** | `[Number]`  
+The minimum value to set to the style property. Useful when progressively calculating a value.
 
-related references: [`animationFunction`](#animationfunction), [`animationConfig`](#animationconfig)
+**`to`** | `[Number or String]`
+If you want progressively calculated (scaled) values, this has to be a **number**. Otherwise, if for something a 'change' animation, this can be a string - whatever the valid type for the relevant `style` property is.
+
+related references: [`animationFunction`](#animationfunction)
 
 ---
 
-### `animationFunction` - [ function ]
+### `animationFunction`
 
-arguments: [animationData]
-
-
-`customFunctions` {Object} | [optional]  
-Its keys are the function names, while the values are animation functions (see animationFunction).
+`[Function]` | A function that takes animation data and does something with it.
 
 example:
+````js
+// randomize the color of a given node
+(data) => {
+  const chars = '0123456789abcdef'.split('')
+  let hex = '#'
+
+  while (hex.length < 7) {
+    hex += chars[Math.round(Math.random() * (chars.length - 1))]
+  }
+
+  data.node.style.color = hex
+}
+````
+
+arguments: [`animationData`](#animationData)
+
+---
+
+### `animationData`
+
+`[Object]` | This is the data passed into an `animationFunction`. A lot of it is taken directly from `animationConfig`.
+
+Structure:
 ```
-  { 'doSomething': (data) => doesSomething(data) }
+{
+  node: [DOM Element] | the element this animation will affect,
+  progress: [Number]  | a number representing the relative location of a node within a range,
+
+  // these are all taken directly from the animationConfig
+  style: (see above),
+  from: (see above),
+  to: (see above),
+  unit: (see above),
+}
 ```
 
-
-`animations` {Array}       | [required]  
-An array of animationConfigObjects.
+**`Progress` is what allows for progressive scaling of values (ex. smooth fading of opacity, 2d translation, etc.)**
+If the value is between 0 and 1, that means you are within a range (given in animationConfig).
 
 ---
 
