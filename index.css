@@ -121,3 +121,27 @@ a { text-decoration: none; }
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
+
+
+@media (max-width:660px) {
+  #letters div {
+    font-size: 38px;
+  }
+}
+
+@media (max-width:500px) {
+  #letters { top: 180px; }
+
+  #letters div { font-size: 20px; }
+  #letters .line { display: none; }
+  #letters .description { padding: 20px; }
+
+  .links { height: calc(100vh - 300px); }
+
+  .links .quickstart {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .scroll-down { top: 300px; }
+}
