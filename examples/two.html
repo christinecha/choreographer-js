@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Choreographer-JS | Example One</title>
+    <title>Choreographer-JS | Example Two</title>
   </head>
 
   <body>
@@ -22,14 +22,14 @@
 
       #box {
         margin: 0 0;
-        width: 100%;
-        height: 500vh;
+        width: 100vw;
+        height: 100vh;
         background: black;
         opacity: 0.2;
       }
     </style>
 
-    <p>Animating based on scroll location.</p>
+    <p>Animating based on mouse movement.</p>
     <div id="box"></div>
 
     <script src="../dist/choreographer.min.js"></script>
@@ -37,7 +37,7 @@
       let choreographer = new Choreographer({
         animations: [
           {
-            range: [-1, window.innerHeight * 4],
+            range: [-1, window.innerWidth],
             selector: '#box',
             type: 'scale',
             style: 'opacity',
@@ -47,8 +47,8 @@
         ]
       })
 
-      window.addEventListener('scroll', () => {
-        choreographer.runAnimationsAt(window.pageYOffset)
+      window.addEventListener('mousemove', (e) => {
+        choreographer.runAnimationsAt(e.clientX)
       })
     </script>
   </body>

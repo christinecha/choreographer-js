@@ -1,6 +1,7 @@
 /examples/
 /src/
+/assets/
+webpack.config.js
 index.html
 index.js
 index.css
-webpack.config.js
