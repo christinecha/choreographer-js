@@ -4,7 +4,7 @@ A simple library to take care of complex CSS animations.
 
 [See the fancy demo here -->](https://christinecha.github.io/choreographer-js/)
 
-Other examples:
+**Other examples:**  
 [Basic Example (animating based on scroll location)](https://christinecha.github.io/choreographer-js/examples/one.html)  
 [Basic Example (animating based on mouse X location)](https://christinecha.github.io/choreographer-js/examples/two.html)  
 [Basic Example (multiple animations based on mouse X location)](https://christinecha.github.io/choreographer-js/examples/three.html)
