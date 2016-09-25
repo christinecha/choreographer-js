@@ -87,18 +87,22 @@ More detailed documentation below.
 
 ## Full API Reference
 
-### `Choreographer` - [ class ]
+### `Choreographer`
+
+`[Class]` | The home base for everything.
 
 construction:  
-`new Choreographer(` [`choreographerConfig`](#choreographerconfig----object-) `)`
+`new Choreographer(` [`choreographerConfig`](#choreographerconfig) `)`
 
 methods:
 - [`this.updateAnimations`](#update-animations)
 - [`this.runAnimationsAt`](#run-animations-at)
 
-### `choreographerConfig` - [ object ]
+---
 
-The object used to configure an instance of Choreographer.
+### `choreographerConfig`
+
+`[Object]` | The object used to configure an instance of Choreographer.
 
 example structure:
 ```
@@ -109,6 +113,79 @@ example structure:
   animations: [ animationConfig, animationConfig, ... ]
 }
 ```
+related references: [`animationFunction`](#animationfunction), [`animationConfig`](#animationconfig)
+
+---
+
+### `Choreographer.updateAnimations([ Array of` [`animationConfig`](#animationconfig) `])`
+
+`[Function]` | Replace `this.animations` with a new Array of `Animations`.
+
+---
+
+### `Choreographer.runAnimationsAt([ Number ])`
+
+`[Function]` | Run the animations at a given location marker.
+
+---
+---
+
+### `Animation`
+
+`[Class]` | The class that manages each animation's data.
+
+construction:  
+`new Animation(` [`animationConfig`](#animationconfig) `)`
+
+methods:
+- [`this.updateAnimations`](#update-animations)
+- [`this.runAnimationsAt`](#run-animations-at)
+
+---
+
+### `animationConfig`
+
+`[Object]` | The object used to configure an instance of Animation.
+
+example structure:
+```
+{ range: [0, 100],  selector: '.box', type: 'scale', fn: [animationFunction], style: 'width', from: 0, to: 100, unit: '%' }
+```
+
+`range` | `[Array of Number]` or `[Array of Array of Number]`  
+Either a one- or two-dimensional array of ranges, i.e. [0,5] or [[0,3], [4,5]]  
+*NOTE: Bugs will occur if you overlap animation ranges that affect the same style properties!*
+
+`type` | `[String]`  
+The name of the animation function
+
+`fn` | `[animationFunction]`
+The animation function
+
+`selector` | `[String]`  
+A valid DOM Element selector string, ex. '.classname' or '#box .thing[data-attr=true]'
+
+`selectors` | `[Array]`
+An array of selector strings (as described above).
+
+*NOTE: Only one of the below (selector or selectors) is necessary. If they both exist, 'selectors' will be used.*
+
+`style` | `[String]`
+A valid CSS style property.
+*NOTE: If you are using 'transform', follow it with a colon and the property name, ex. 'transform:scaleX'*
+
+{Number} from     | The minimum value to set to the style property. Useful when progressively calculating a value.
+{Number} to       | The value to set to the style property. (Or the max, when progressively calculating a value.)
+NOTE: If you are ONLY using the 'to' value, like with a 'change' animation, this could also be {String} to.
+
+related references: [`animationFunction`](#animationfunction), [`animationConfig`](#animationconfig)
+
+---
+
+### `animationFunction` - [ function ]
+
+arguments: [animationData]
+
 
 `customFunctions` {Object} | [optional]  
 Its keys are the function names, while the values are animation functions (see animationFunction).

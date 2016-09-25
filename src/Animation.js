@@ -11,7 +11,7 @@
     {Array} selectors | an array of selector strings (described above).
 
     {String} style    | a valid CSS style property.
-    NOTE: If you are using 'transform', follow it with a colon and the property name, ex. 'transform: scaleX'
+    NOTE: If you are using 'transform', follow it with a colon and the property name, ex. 'transform:scaleX'
 
     {Number} from     | The minimum value to set to the style property. Useful when progressively calculating a value.
     {Number} to       | The value to set to the style property. (Or the max, when progressively calculating a value.)
