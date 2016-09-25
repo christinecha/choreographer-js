@@ -8,7 +8,7 @@ body {
   height: 100%;
   overflow: auto;
   margin: 0 0;
-  font-family: 'Proxima Nova', sans-serif;
+  font-family: 'Rubik', sans-serif;
   background-color: #f5f5f5;
 }
 
@@ -43,7 +43,7 @@ a { text-decoration: none; }
 #letters div {
   display: inline-block;
   font-size: 50px;
-  font-family: 'Bungee', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   transition: color 0.1s ease-in-out;
 }
 
