@@ -4,7 +4,7 @@ A simple library to take care of complex CSS animations.
 
 #### Table of Contents + Useful Links
 1. [Quickstart](#quickstart)
-2. [Use Cases + Snippets](#use-cases-+-snippets)
+2. [Use Cases + Snippets](#use-cases--snippets)
 3. [Examples](examples)
 4. [Full API Reference](#full-api-reference)
 5. [Contributing](#contributing)
