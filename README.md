@@ -1,6 +1,9 @@
 # Choreographer-js
-A simple library to take care of complex CSS animations.
+A simple library to take care of complex CSS animations.  
 *(You can also add custom functions that do non-CSS animations!)*
+
+[See the demo here -->](https://christinecha.github.io/choreographer-js/)
+
 
 #### Table of Contents + Useful Links
 1. [Quickstart](#quickstart)
