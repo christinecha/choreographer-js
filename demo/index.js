@@ -59,11 +59,10 @@ const calculateAnimations = () => {
 
     /* animate arrow */
     { range: [0.6 * fin, fin], selector: '.scroll-down', type: 'scale', style: 'opacity', from: 1, to: 0 },
-    { range: [fin - 1, fin],   selector: '.scroll-down', type: 'change', style: 'visibility', to: 'hidden' },
+    { range: [fin - 30, fin],   selector: '.scroll-down', type: 'change', style: 'display', to: 'none' },
 
     /* animate links */
     { range: [0.8 * fin, fin], selector: '.links', type: 'scale', style: 'opacity', from: 0, to: 1 }
-
   ]
 }
 

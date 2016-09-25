@@ -19,6 +19,8 @@ p {
   letter-spacing: 0.05em;
 }
 
+a { text-decoration: none; }
+
 #wrapper {
   height: 400vh;
   display: flex;
@@ -75,7 +77,21 @@ p {
 
 .links button {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.links button:hover {
+  background-color: #95cc21;
 }
 
 .scroll-down {

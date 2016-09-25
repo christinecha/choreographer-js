@@ -14,10 +14,6 @@ const getInjectedTransformString = require('./getInjectedTransformString')
   *        }
  **/
 const scale = (data) => {
-  if (data.progress > 0 && data.progress < 1) {
-    data.node.setAttribute('animated', data.node.getAttribute('animated') + ',' + data.style)
-  }
-
   // Get the relative value (proportional to the min-max range you gave.)
   const scaledValue = ((data.to - data.from) * data.progress) + data.from
   // Stick on the unit, if there is one.
@@ -40,16 +36,16 @@ const scale = (data) => {
   * @param {Object} data : {
   *          {Node} node       | the node you want to modify
   *          {String} style    | the style property you want to modify
-  *          {Number} to       | the style value
+  *          {Value} to        | the style value (number, string -- whatever valid type this CSS prop takes)
   *          {Number} progress | a value between 0 and 1; the proportion of value we should use
   *        }
  **/
 const change = (data) => {
-  if (data.progress >= 0) data.node.setAttribute('animated', data.node.getAttribute('animated') + ',' + data.style)
   const newValue = data.progress < 0 ? null : data.to
   const newValueString = newValue && data.unit ? newValue + data.unit : newValue
 
   // If the progress is less than 0, we just need to nullify this style value.
+  // But, if the style prop is 'transition', apply it only after the last transition ends.
   if (data.progress < 0 && data.style === 'transition') {
     data.node.addEventListener('transitionend', (e) => {
       if (e.target === data.node) data.node.style[data.style] = null
