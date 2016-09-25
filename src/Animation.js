@@ -1,7 +1,21 @@
 class Animation {
   constructor(config) {
     this.config = config
-    this.nodes = Array.from(document.querySelectorAll(this.config.selector))
+    this.storeNodes()
+  }
+
+  storeNodes() {
+    if (this.config.selector) {
+      this.nodes = Array.from(document.querySelectorAll(this.config.selector))
+    }
+
+    if (this.config.selectors) {
+      this.nodes = []
+      this.config.selectors.forEach(s => {
+        const nodes = Array.from(document.querySelectorAll(s))
+        this.nodes = this.nodes.concat(nodes)
+      })
+    }
   }
 
   getProgress(val, [min, max]) {
@@ -31,6 +45,7 @@ class Animation {
   runAt(progress) {
     this.nodes.forEach(node => {
       const animate = this.config.fn
+
       animate({
         node: node,
         style: this.config.style,
