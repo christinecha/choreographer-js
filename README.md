@@ -2,13 +2,18 @@
 A simple library to take care of complex CSS animations.  
 *(You can also add custom functions that do non-CSS animations!)*
 
-[See the demo here -->](https://christinecha.github.io/choreographer-js/)
+[See the fancy demo here -->](https://christinecha.github.io/choreographer-js/)
+
+Other examples:
+[Basic Example (animating based on scroll location)](https://christinecha.github.io/choreographer-js/examples/one.html)
+[Basic Example (animating based on mouse X location)](https://christinecha.github.io/choreographer-js/examples/two.html)
+[Basic Example (multiple animations based on mouse X location)](https://christinecha.github.io/choreographer-js/examples/three.html)
 
 
 #### Table of Contents + Useful Links
 1. [Quickstart](#quickstart)
 2. [Use Cases + Snippets](#use-cases--snippets)
-3. [Examples](examples)
+3. [Example Code](examples)
 4. [Full API Reference](#full-api-reference)
 5. [Contributing](#contributing)
 6. [License](#license)
