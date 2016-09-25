@@ -2,6 +2,14 @@
 A simple library to take care of complex CSS animations.
 *(You can also add custom functions that do non-CSS animations!)*
 
+#### Table of Contents + Useful Links
+1. [Quickstart](#quickstart)
+2. [Use Cases + Snippets](#use-cases-+-snippets)
+3. [Examples](examples)
+4. [Full API Reference](#full-api-reference)
+5. [Contributing](#contributing)
+6. [License](#license)
+
 
 ## Quickstart
 
@@ -83,7 +91,7 @@ window.addEventListener('scroll', () => {
 })
 ````
 
-More detailed documentation below.
+The easiest way to understand how this all works is to check out the [**examples**](examples). More detailed documentation below!
 
 ## Full API Reference
 
@@ -190,24 +198,26 @@ related references: [`animationFunction`](#animationfunction)
 
 ### `animationFunction`
 
-`[Function]` | A function that takes animation data and does something with it.
+`[Function]` | A function that takes [`animationData`](#animationdata) and does something with it.
 
-example:
+There are two built-in animation functions available, called 'scale' and 'change'.
+
+- 'scale' maps a progressively calculated value to the node's style property based on location
+- 'change' adds or takes away a style property value if you're in or out of range
+
+Example animationFunction (this is a simplified version of how 'change' works):
 ````js
-// randomize the color of a given node
 (data) => {
-  const chars = '0123456789abcdef'.split('')
-  let hex = '#'
+  // where data is an 'animationData' object (see below)
+  const newValueString = data.to + data.unit
 
-  while (hex.length < 7) {
-    hex += chars[Math.round(Math.random() * (chars.length - 1))]
+  if (data.progress > 0 && data.progress < 1) {
+    data.node.style[data.style] = newValueString
   }
-
-  data.node.style.color = hex
 }
 ````
 
-arguments: [`animationData`](#animationData)
+arguments: [`animationData`](#animationdata)
 
 ---
 
@@ -234,17 +244,24 @@ If the value is between 0 and 1, that means you are within a range (given in ani
 
 ---
 
-
-
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
+
+Found an issue but don't know how to fix it? Submit an issue or email me.
+
+---
+
 ## License
-TODO: Write license
+
+The MIT License (MIT)
+Copyright (c) 2016 Christine Cha
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
