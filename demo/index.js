@@ -1,5 +1,3 @@
-const Choreographer = require('../dist')
-
 const $wrapper = document.getElementById('wrapper')
 const $scrollDown = document.querySelector('.scroll-down')
 const $links = document.querySelector('.links')

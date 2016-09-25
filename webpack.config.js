@@ -1,13 +1,20 @@
+var webpack = require('webpack')
+
 module.exports = {
-  entry: "./demo",
+  entry: "./dist",
   output: {
-    publicPath: "/demo/",
-    path: __dirname + "/demo",
-    filename: "bundle.js"
+    publicPath: "/dist/",
+    path: __dirname + "/dist/",
+    filename: "choreographer.min.js"
   },
   module: {
     test: /\*.js/,
     loader: "babel-loader",
-    exclude: '/node_modules/'
-  }
+    exclude: "/node_modules/"
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    })
+  ]
 }

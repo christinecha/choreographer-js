@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
+      #box {
+        width: 100%;
+        height: 500vh;
+        background: black;
+        opacity: 0.2;
+      }
+    </style>
+
+
+    <div id="box"></div>
+
+    <script src="/dist/choreographer.min.js"></script>
+    <script>
+      let choreographer = new Choreographer({
+        animations: [
+          {
+            range: [-1, window.innerHeight * 4],
+            selector: '#box',
+            type: 'scale',
+            style: 'opacity',
+            from: 0.2,
+            to: 1
+          }
+        ]
+      })
+
+      window.addEventListener('scroll', () => {
+        choreographer.runAnimationsAt(window.pageYOffset)
+      })
+    </script>
+  </body>
+</html>
