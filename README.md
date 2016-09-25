@@ -89,11 +89,12 @@ More detailed documentation below.
 
 ### `Choreographer` - [ class ]
 
-`new Choreographer( [choreographerConfig](#choreographer-config) )`
+construction:  
+`new Choreographer(` [`choreographerConfig`](#choreographerconfig----object-) `)`
 
-`Choreographer` has the following public methods:
-- [`updateAnimations`](#update-animations)
-- [`runAnimationsAt`](#run-animations-at)
+methods:
+- [`this.updateAnimations`](#update-animations)
+- [`this.runAnimationsAt`](#run-animations-at)
 
 ### `choreographerConfig` - [ object ]
 
