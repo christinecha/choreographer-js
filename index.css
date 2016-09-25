@@ -43,7 +43,9 @@ a { text-decoration: none; }
 #letters div {
   display: inline-block;
   font-size: 50px;
-  font-family: 'Playfair Display', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
   transition: color 0.1s ease-in-out;
 }
 
