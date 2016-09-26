@@ -1,4 +1,7 @@
 # Choreographer-js
+
+[![choreographer-js on NPM](https://img.shields.io/npm/v/choreographer-js.svg?style=flat-square)](https://www.npmjs.com/package/choreographer-js)
+
 A simple library to take care of complex CSS animations.  
 *(You can also add custom functions that do non-CSS animations!)*
 
