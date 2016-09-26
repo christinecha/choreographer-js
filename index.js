@@ -1,17 +1,17 @@
-const $wrapper = document.getElementById('wrapper')
-const $scrollDown = document.querySelector('.scroll-down')
-const $links = document.querySelector('.links')
+var $wrapper = document.getElementById('wrapper')
+var $scrollDown = document.querySelector('.scroll-down')
+var $links = document.querySelector('.links')
 
-const vh = window.innerHeight
+var vh = window.innerHeight
 
 /* STORE SOME KEY LOCATIONS */
 
 /* ~ le fin ~
  * The point where you cannot scroll down any further.
  */
-const fin = $wrapper.clientHeight - vh + $links.clientHeight
+var fin = $wrapper.clientHeight - vh + $links.clientHeight
 
-const calculateAnimations = () => {
+function calculateAnimations() {
   return [
     /* animate Cs */
     { range: [-1, fin * 0.5],   selector: '.c', type: 'scale', style: 'transform:translateY', from: 0, to: 25, unit: 'px' },
@@ -52,7 +52,7 @@ const calculateAnimations = () => {
     { range: [fin * 0.4, fin],  selectors: ['.p', '.dash'], type: 'change', style: 'color', to: '#ff537c' },
 
     /* animate line */
-    { range: [-1, fin],         selector: '.line', type: 'scale', style: 'width', from: 0.01, to: 100, unit: '%' },
+    { range: [-1, fin],         selector: '.line', type: 'scale', style: 'width', from: 0.01, to: 50, unit: '%' },
     { range: [-1, fin],         selector: '.line', type: 'scale', style: 'opacity', from: 0, to: 1 },
 
     /* animate arrow */
@@ -65,12 +65,12 @@ const calculateAnimations = () => {
 }
 
 // Instantiate choreographer.
-let choreographer = new Choreographer({
+var choreographer = new Choreographer({
   animations: calculateAnimations(),
   customFunctions: {
-    randomizeColor: (data) => {
-      const chars = '0123456789abcdef'.split('')
-      let hex = '#'
+    randomizeColor: function(data) {
+      var chars = '0123456789abcdef'.split('')
+      var hex = '#'
 
       while (hex.length < 7) {
         hex += chars[Math.round(Math.random() * (chars.length - 1))]
@@ -81,8 +81,8 @@ let choreographer = new Choreographer({
   }
 })
 
-const animate = () => {
-  const scrollPosition = ($wrapper.getBoundingClientRect().top - $wrapper.offsetTop) * -1
+function animate() {
+  var scrollPosition = ($wrapper.getBoundingClientRect().top - $wrapper.offsetTop) * -1
   choreographer.runAnimationsAt(scrollPosition)
 }
 
@@ -90,6 +90,6 @@ document.body.addEventListener('scroll', animate)
 
 animate()
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', function() {
   choreographer.updateAnimations(calculateAnimations())
 })

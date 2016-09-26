@@ -38,6 +38,7 @@ a { text-decoration: none; }
   position: fixed;
   text-align: center;
   top: 280px;
+  width: 100%;
 }
 
 #letters div {

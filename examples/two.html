@@ -34,7 +34,7 @@
 
     <script src="../dist/choreographer.min.js"></script>
     <script>
-      let choreographer = new Choreographer({
+      var choreographer = new Choreographer({
         animations: [
           {
             range: [-1, window.innerWidth],
@@ -47,7 +47,7 @@
         ]
       })
 
-      window.addEventListener('mousemove', (e) => {
+      window.addEventListener('mousemove', function(e) {
         choreographer.runAnimationsAt(e.clientX)
       })
     </script>

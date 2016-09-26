@@ -34,7 +34,7 @@
 
     <script src="../dist/choreographer.min.js"></script>
     <script>
-      let choreographer = new Choreographer({
+      var choreographer = new Choreographer({
         animations: [
           {
             range: [-1, window.innerHeight * 4],
@@ -47,7 +47,7 @@
         ]
       })
 
-      window.addEventListener('scroll', () => {
+      window.addEventListener('scroll', function() {
         choreographer.runAnimationsAt(window.pageYOffset)
       })
     </script>
