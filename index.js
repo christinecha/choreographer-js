@@ -1,6 +1,6 @@
-var $wrapper = document.getElementById('wrapper')
-var $scrollDown = document.querySelector('.scroll-down')
-var $links = document.querySelector('.links')
+var wrapperNode = document.getElementById('wrapper')
+var scrollDownNode = document.querySelector('.scroll-down')
+var linkNodes = document.querySelector('.links')
 
 var vh = window.innerHeight
 
@@ -9,7 +9,7 @@ var vh = window.innerHeight
 /* ~ le fin ~
  * The point where you cannot scroll down any further.
  */
-var fin = $wrapper.clientHeight - vh + $links.clientHeight
+var fin = wrapperNode.clientHeight - vh + linkNodes.clientHeight
 
 function calculateAnimations() {
   return [
@@ -82,7 +82,7 @@ var choreographer = new Choreographer({
 })
 
 function animate() {
-  var scrollPosition = ($wrapper.getBoundingClientRect().top - $wrapper.offsetTop) * -1
+  var scrollPosition = (wrapperNode.getBoundingClientRect().top - wrapperNode.offsetTop) * -1
   choreographer.runAnimationsAt(scrollPosition)
 }
 
