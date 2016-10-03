@@ -47,13 +47,13 @@ var Animation = function () {
       var _this = this;
 
       if (this.config.selector) {
-        this.nodes = Array.from(document.querySelectorAll(this.config.selector));
+        this.nodes = Array.prototype.slice.call(document.querySelectorAll(this.config.selector));
       }
 
       if (this.config.selectors) {
         this.nodes = [];
         this.config.selectors.forEach(function (s) {
-          var nodes = Array.from(document.querySelectorAll(s));
+          var nodes = Array.prototype.slice.call(document.querySelectorAll(s));
           _this.nodes = _this.nodes.concat(nodes);
         });
       }
