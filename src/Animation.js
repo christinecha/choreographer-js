@@ -32,8 +32,10 @@ class Animation {
 
       if (typeof this.config.selector === 'string') {
         this.nodes = Array.prototype.slice.call(document.querySelectorAll(this.config.selector))
-      } else {
+      } else if (this.config.selector.length) {
         this.nodes = Array.prototype.slice.call(this.config.selector)
+      } else {
+        this.nodes = [this.config.selector]
       }
     }
 
@@ -44,8 +46,10 @@ class Animation {
         if (typeof s === 'string') {
           const nodes = Array.prototype.slice.call(document.querySelectorAll(s))
           this.nodes = this.nodes.concat(nodes)
-        } else {
+        } else if (this.config.selector.length) {
           this.nodes = this.nodes.concat(Array.prototype.slice.call(s))
+        } else {
+          this.nodes = this.nodes.push(s)
         }
       })
     }
@@ -101,7 +105,9 @@ class Animation {
 
       // If NOT, then you can go ahead and animate it here.
       // We need this checkpoint to avoid overriding each other.
-      if (!animated) {
+
+      // If you're using class instead of style props, it don't matter.
+      if (this.config.style === 'class' || !animated) {
         // If it's a simple 'change' function, we just need a value outside of 0 to 1. Could be -9.87. Doesn't matter.
         if (this.config.type === 'change') progress = -1
 
