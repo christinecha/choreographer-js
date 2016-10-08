@@ -185,8 +185,8 @@ The name of the animation function
 **`fn`** | `[animationFunction]`
 see `animationFunction`](#animationfunction)
 
-**`selector`** | `[String]`  
-A valid DOM Element selector string, ex. '.classname' or '#box .thing[data-attr=true]'
+**`selector`** | `[String]` or `[NodeList]` or `[DOM Element]`  
+A valid DOM Element, list of elements, or selector string, ex. '.classname' or '#box .thing[data-attr=true]'
 
 **`selectors`** | `[Array]`
 An array of selector strings (as described above).

@@ -57,6 +57,11 @@ var change = function change(data) {
 
   // If it's a regular old style property, just replace the value. No fuss.
   if (data.style.split(':').length === 1) {
+    if (data.style === 'class') {
+      data.node.classList[newValue ? 'add' : 'remove'](data.to);
+      return;
+    }
+
     data.node.style[data.style] = newValueString;
     return;
   }

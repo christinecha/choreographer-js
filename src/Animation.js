@@ -29,14 +29,24 @@ class Animation {
   // Either use 'selector' or 'selectors' to find and store all the DOM nodes.
   storeNodes() {
     if (this.config.selector) {
-      this.nodes = Array.prototype.slice.call(document.querySelectorAll(this.config.selector))
+
+      if (typeof this.config.selector === 'string') {
+        this.nodes = Array.prototype.slice.call(document.querySelectorAll(this.config.selector))
+      } else {
+        this.nodes = Array.prototype.slice.call(this.config.selector)
+      }
     }
 
     if (this.config.selectors) {
       this.nodes = []
       this.config.selectors.forEach(s => {
-        const nodes = Array.prototype.slice.call(document.querySelectorAll(s))
-        this.nodes = this.nodes.concat(nodes)
+
+        if (typeof s === 'string') {
+          const nodes = Array.prototype.slice.call(document.querySelectorAll(s))
+          this.nodes = this.nodes.concat(nodes)
+        } else {
+          this.nodes = this.nodes.concat(Array.prototype.slice.call(s))
+        }
       })
     }
   }
