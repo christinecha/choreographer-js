@@ -1,6 +1,6 @@
 {
   "name": "choreographer-js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple library to take care of complicated animations.",
   "main": "dist/index.js",
   "scripts": {

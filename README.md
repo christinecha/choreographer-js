@@ -194,7 +194,7 @@ An array of selector strings (as described above).
 *NOTE: Only one of the below (selector or selectors) is necessary. If they both exist, 'selectors' will be used.*
 
 **`style`** | `[String]`
-A valid CSS style property.
+A valid CSS style property OR the string "class" to toggle a classname instead.
 *NOTE: If you are using 'transform', follow it with a colon and the property name, ex. 'transform:scaleX'*
 
 **`from`** | `[Number]`  
