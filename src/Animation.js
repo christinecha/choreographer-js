@@ -30,7 +30,9 @@ class Animation {
   storeNodes() {
     if (this.config.selector) {
 
-      if (typeof this.config.selector === 'string') {
+      if (this.config.selector.nodeType > 0) {
+        this.nodes = [this.config.selector]
+	  } else if (typeof this.config.selector === 'string') {
         this.nodes = Array.prototype.slice.call(document.querySelectorAll(this.config.selector))
       } else if (this.config.selector.length) {
         this.nodes = Array.prototype.slice.call(this.config.selector)
@@ -43,7 +45,9 @@ class Animation {
       this.nodes = []
       this.config.selectors.forEach(s => {
 
-        if (typeof s === 'string') {
+        if (s.nodeType > 0) {
+			this.nodes = this.nodes.push(s)
+        } else if (typeof s === 'string') {
           const nodes = Array.prototype.slice.call(document.querySelectorAll(s))
           this.nodes = this.nodes.concat(nodes)
         } else if (this.config.selector.length) {
