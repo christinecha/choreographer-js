@@ -30,6 +30,7 @@ class Animation {
   storeNodes() {
     if (this.config.selector) {
 
+      console.log(typeof this.config.selector, this.config.selector);
       if (this.config.selector.nodeType > 0) {
         this.nodes = [this.config.selector]
 	  } else if (typeof this.config.selector === 'string') {
